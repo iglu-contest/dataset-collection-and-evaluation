@@ -1,0 +1,134 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<html>
+<style>
+  view_color {
+    background-color: #d5f4e6;
+  }
+  
+  .frame {
+  height: 160px; /*can be anything*/
+  width: 160px; /*can be anything*/
+  display: inline-block;
+  vertical-align: top; /*not required*/
+  border: 1px solid black; /*not required*/
+  position: relative;
+}
+
+#worlddiv {
+        float: left;
+        position:relative;
+        width: 800px; 
+        height: 800px;
+      }
+
+#instruction_text {
+  width: 95%;
+}
+
+#clarifying_question {
+    width: 95%;
+}
+
+#instruction_cell {
+   max-width: 40em;
+}
+
+#picked_view {
+    position:relative;
+    width: 160px; 
+    height: 145px;
+}
+
+#alt_world_text{
+    display:none;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.frame span {
+  font-family: arial, sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  font-size: 12px;
+}
+</style>
+
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+  <script type="text/javascript">
+   function handleSubmit(txt) {
+      console.log('upload to Azure');
+      console.log('$gameId');
+      myWorld.uploadToCloud('https://iglumturkstorage.blob.core.windows.net/mturk-single-turn/${builderDataPath}/actionHit/', 
+      '$sas', 
+      'game-$gameId', 'step-action', function() {
+        document.getElementById("mturk_form").submit();
+      });
+      return false;
+   }
+
+   function recover_world() {
+     myWorld.recoverWorldState('https://iglumturkstorage.blob.core.windows.net/mturk-vw/${builderDataPath}/',
+     '$sas',
+     '$screenshotGameId', '$screenshotStep')
+   }
+
+ 
+
+  </script>
+
+</head>
+<body>
+<table style="width:100%">
+  <tr>
+    <td valign="top" align="left" id="instruction_cell">
+    <form name='mturk_form' method='post' id='mturk_form' onsubmit="return handleSubmit()" action='https://www.mturk.com/mturk/externalSubmit'>
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+    <p align="left"><b><view_color>Please wait! It may take some time for voxel world to load</view_color></b></p>
+    <p align="left"><b><view_color>Important: Click on the 'Submit' at the bottom of the page when you are done</view_color></b></p>
+    <p><b>Image of the starting world to help you track changes you made to the world in the right pane.</b>
+    <div class=frame>
+        <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotGameId/$screenshotStepView.png"/>
+    </div>
+    <br>
+    <p><b>Write about the changes you made to the world in a few simple sentences. Write it in the form of an instruction</b>
+    <br>
+    <p><textarea name='InputInstruction' rows='3' maxlength='512' id='instruction_text'></textarea></p>
+      
+    <p><b>Use the following keyboard commands to operate in the voxel world:</b></p>
+    <ul align="left">
+      <li><b>mouse click</b> on the game area: to activate builder and see the cursor</li>
+      <li><b>w/a/s/d</b>: move forward/left/backward/right </li>
+      <li><b>shift/space</b>: Move down/up<br>
+      <li><b>mouse click</b>: break block </li>
+      <li><b>red cursor</b>: indicates where the block will be placed </li>
+      <li><b>1/2/3/4/5/6</b>: place a blue/yellow/green/orange/purple/red block </li>
+      <li><b>esc</b>: leave the Voxel world area</li>
+    <ul>
+      <p><input type='submit' id='submitButton' value='Submit'/></p></form>
+      <script language='Javascript'>
+      turkSetAssignmentID();
+      </script>
+   </td>
+    <td valign="top">
+       <div id="worlddiv"></div>
+       <!-- <div id="alt_world_text"><b>Thank you for performing actions in the world. Please describe your changes in the form of an instruction on the left text area</b></div> -->
+    </td>
+  </tr>
+</table>
+<script onload="recover_world()" src="https://cdn.jsdelivr.net/gh/snyxan/myWorld@main/myWorld_option_1.js"></script> 
+</body>
+</html>
+]]>
+  </HTMLContent>
+  <FrameHeight>0</FrameHeight>
+</HTMLQuestion>

@@ -1,0 +1,33 @@
+Data structure contains of two main components:
+1) Tables:
+   - GameIds
+     PartitionKey = target_structure_id
+     RowKey = attempt (a sequential number to indicate an attempt)
+     Timestamp
+     GameId (the combination of target_structure_id and attempt generates game_id)
+     Started = yes if game has been started
+     Finished = yes if the game has been finished
+
+   - HITsTable
+     PartitionKey = game_id
+     RowKey = HITId (from Mturk)
+     Timestamp 
+     StepId = step id in the game (even ones belong to builder role, odd belongs to architect role)
+     structureId = target_structure_id
+     attemptId (as above)
+     Role = architect-normal (when architect needs to give the instruction), architect-cq (when architect needs to answer clarifying question), builder-normal (when previous instruction was clear and no clarifying questions asked), builder-cq (when previous builder asked the question)
+     InputScreenshotPath = partial path to screen shots
+     IsBuiltStructureComplete = if role was architect, it can be indicated that the structure is complete then the game is over
+     IsHITQualified = false (if the input did not go through internal checks), and true otherwise
+     WorkerId = worker id from Mturk platform
+     instruction = if the role is architect, then this field shows the instruction
+     views = if the role is architect, then this field represents view (south, north, east, and west) that has been picked by architect
+     InputInstruction = if the role is builder, then this field shows the instruction given by architect at the previous step
+     InputViews = if the role is builder, then this field shows the view picked by the architect
+     IsInstructionClear = if the role is builder, this field indicates if the instruction was clear to builder
+     ClarifyingQuestion = if the role is builder and the instruction is not clear
+     InputAnswer4ClarifyingQuestion
+     InputClarifyingQuestion
+     IsInstructionQAClear
+     Answer4ClarifyingQuestion
+     IsClarifyingQuestionClear

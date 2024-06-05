@@ -1,0 +1,134 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<html>
+<style>
+  view_color {
+    background-color: #d5f4e6;
+  }
+  
+  .frame {
+  height: 160px; /*can be anything*/
+  width: 160px; /*can be anything*/
+  display: inline-block;
+  vertical-align: top; /*not required*/
+  border: 1px solid black; /*not required*/
+  position: relative;
+}
+
+#worlddiv {
+        float: left;
+        position:relative;
+        width: 800px; 
+        height: 800px;
+      }
+
+#instruction_text {
+  width: 95%;
+}
+
+#clarifying_question {
+    width: 95%;
+}
+
+#instruction_cell {
+   max-width: 40em;
+}
+
+#picked_view {
+    position:relative;
+    width: 160px; 
+    height: 145px;
+}
+
+.frame span {
+  font-family: arial, sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  font-size: 12px;
+}
+</style>
+
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+  <script type="text/javascript">
+   function handleSubmit(txt) {
+     console.log('upload to Azure');
+     myWorld.uploadToCloud('https://iglumturkstorage.blob.core.windows.net/mturk-vw/${builderDataPath}/', 
+     '$sas',
+     '$gameId', 'step-$currentStep', function() {
+       document.getElementById("mturk_form").submit();
+     });
+     return false;
+   }
+   function recover_world() {
+     myWorld.recoverWorldState('https://iglumturkstorage.blob.core.windows.net/mturk-vw/${builderDataPath}/', 
+     '$sas',
+     '$gameId', 'step-$prevStep')
+   }
+  </script>
+</head>
+<body>
+<table style="width:100%">
+  <tr>
+    <td valign="top" align="left" id="instruction_cell">
+    <form name='mturk_form' method='post' id='mturk_form' onsubmit="return handleSubmit()" action='https://www.mturk.com/mturk/externalSubmit'>
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+ <p align="left"><b><view_color>Please wait! It may take some time for voxel world to load</view_color></b></p>
+    <p align="left"><b><view_color>Important: Click on the 'Submit' at the bottom of the page when you are done</view_color></b></p>
+    <p><b>Execute:</b></h3>
+    <p><i>$instruction</i></p>
+     
+    <p><b>For the $screenshotView viewpoint of the intermediate structure </b> (note if it's the first step; the game area below is empty):</p>
+    <div class=frame>
+        <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotPath$screenshotView.png"/>   
+    </div>
+
+    <p><b>The previous builder found this instruction unclear and has asked the following clarifying question:</b></p>
+    <p><i>$clarifyingQuestion</i></p>
+
+    <p><b>Here's the answer the architect gave to that question:</b></p>
+    <p><i>$answer</i></p>
+  
+    <label for="clear"><b>Is this instruction clear now?</b></label>
+    <select id="clear" name="IsInstructionQAClear">
+    <option value="Default"></option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    </select>
+
+    <p align="left">Given the information above, please execute the clarified instruction using the following keyboard command to operate in the voxel world:</p>
+    <ul align="left">
+      <li><b>mouse click</b> on the game area: to activate builder and see the cursor</li>
+      <li><b>w/a/s/d</b>: move forward/left/backward/right </li>
+      <li><b>space</b>: jump</li>
+      <li><b>double click space</b>: enable flying mode </li>
+      <li><b>shift</b>: Move downwards. When you are in flying mode, keep pressing shift until <br> 
+      the agent hit the ground. Once the agent hit the ground, flying mode will be turned off. </li>
+      <li><b>mouse click</b>: break block </li>
+      <li><b>1/2/3/4/5/6</b>: place a blue/yellow/green/orange/purple/red block </li>
+      <li><b>esc</b>: leave the Voxel world area</li>    
+  <ul>
+      <p><input type='submit' id='submitButton' value='Submit'/></p></form>
+      <script language='Javascript'>
+      turkSetAssignmentID();
+      </script>
+   </td>
+    <td valign="top">
+       <div id="worlddiv"></div>
+    </td>
+  </tr>
+</table>
+<script onload="recover_world()" src="https://cdn.jsdelivr.net/gh/snyxan/myWorld@main/myWorld_option_1.js"></script> 
+</body>
+</html>
+]]>
+  </HTMLContent>
+  <FrameHeight>0</FrameHeight>
+</HTMLQuestion>

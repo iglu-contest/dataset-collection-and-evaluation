@@ -1,0 +1,51 @@
+{
+    "$id": "iglu.builder.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Data schema for builderin IGLU",
+    "type": "object",
+    "properties": {
+        "gameId": {
+            "description": "unique id for each game session (where a target strcuture is defined)",
+            "type": "integer"
+        },
+        "stepId": {
+            "description": "a monotonically increasing id, identifying which step the builder is in",
+            "type": "integer"
+        },
+        "avatarInfo": {
+            "type": "object",
+            "properties": {
+                "pos": {
+                    "description": "an array of three floats representing avatar's position. i.e. [x, y, z]",
+                    "type": "array"
+                },
+                "look": {
+                    "description": "an array of two floats representing avatar's pitch and yaw. i.e. [pitch, yaw]",
+                    "type": "array"
+                }
+            }
+        },
+        "worldEndingState": {
+            "description": "the ending state of the world after builder has interact with it",
+            "type": "object",
+            "properties": {
+                "blocks": {
+                    "description": "An array of blocks info",
+                    "type": "array",
+                    "items": {
+                        "description": "An array of four elements: [x, y, z, blockId]",
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        "tape": {
+            "description": "A string representation of the tape recording builder's interaction and world state changes, see example_data.txt",
+            "type": "string"
+        },
+        "clarification_question": {
+            "description": "The question builder asks for clarification when they feel confused about their task",
+            "type": "string"
+        }
+    }
+}

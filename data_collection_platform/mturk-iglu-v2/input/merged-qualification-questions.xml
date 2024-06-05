@@ -1,0 +1,502 @@
+<QuestionForm xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd'>
+    <Question>
+        <QuestionIdentifier>consent</QuestionIdentifier>
+        <DisplayName>Consent Form</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p><a href="https://drive.google.com/file/d/1Dzje42PIJ5VU68EN6pM9s4OSaZDaRST2/" target="_blank"><b>Click to read concent form</b></a>,
+                indicate if you understand and agree. </p>
+                <p><b>It is important to agree; otherwise, the qualification test will not be validated.</b></p>
+                <p><b>Do you understand and consent to these terms?</b></p>
+          ]]></FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>consent_agree</SelectionIdentifier>
+                        <Text>I agree</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q1</QuestionIdentifier>
+        <DisplayName>Initial Intruction</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p>
+                Imagine you are playing a creative game in a 3-D world. You will be playing one of the following roles during each hit.
+                </p>
+                <ul>
+                    <li>Architect</li>
+                    <li>Builder</li>
+                </ul>
+                <p>As an <b> Architect </b>, you will instruct an imaginary builder to build a given structure in a 3-D voxel world environment. 
+                You will be shown: the target structure and a partially built structure.
+                You are being asked to describe in plain text, how to get from the intermediate structure towards having the final structure.
+                Make sure your instructions are understandable, succint, and in English.
+                Please know that a builder will follow your instruction blindly without seeing a target structure and will have 45 seconds to complete the task. 
+                The builder will only have access to your instruction, the picture of the intermediate stage of the structure, and 45 seconds to execute the instructions.
+                </p>
+                <p>As a <b> Builder </b>, you will need to build what is instructed in the given instruction set in 45 seconds.
+                You would need use <b>'w/a/s/d'</b> to move <b>'forward/left/back/right'</b>,
+                <b>'space'</b> to jump, <b>'double space'</b> to fly, <b>'shift'</b> to return to ground after flying
+                and <b>'esc'</b> to leave the world and back to the website.
+                </p>
+                <h3> This is how the Builder will look in action:</h3>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/demo.gif" alt="Builder demo"/>
+                <br></br>
+                <p>The following questions will give you a glimpse of both roles. Please select appropriate answers.</p>
+                <p>Click on <b>"Submit Test" </b> button at the bottom once you have complted answering all questions.</p>
+                <br></br>
+                <p><b>Questions 1-5 are based on the role for an Architect with the below target structure given. Please select the most appropriate instructions to build the structure.</b></p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q1.png" alt="Target structure"/>
+            ]]></FormattedContent>
+            <Text>1. What would be an appropriate first instruction you would provide to the builder?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Text>Facing east, make a tower with a blue block at bottom, green block on top of that and then a blue block on top</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Text>Facing east, make a tower consisting of two blocks with a blue block at the bottom</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Text>Facing north, make a tower consisting of two blocks with a red block at the bottom</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong3</SelectionIdentifier>
+                        <Text>Put a green block on top of yellow one while facing north</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q2</QuestionIdentifier>
+        <DisplayName>Continue on giving instructions</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p> Considering the same target structure as above.</p>
+                <p> The intermediate structure from the builder is the following:</p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q2.png" alt="Intermediate structure"/>
+                
+          ]]></FormattedContent>
+            <Text>2. What would be the next instruction you would provide to the builder?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Text>Continue building the tower by placing two red blocks on top of each other</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Text>Place a green block on the side</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Text>Continue building the tower by placing one blue block on the top</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong3</SelectionIdentifier>
+                        <Text>Place two blue blocks on top of each other</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q3</QuestionIdentifier>
+        <DisplayName>Continue on giving instruction</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p> Considering the same target structure as above</p>
+                <p> The intermediate structure from the builder is the following:</p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q3.png" alt="Intermediate structure"/>
+          ]]>            </FormattedContent>
+            <Text>3. What would be an appropriate instruction to give to builder for the next step?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Text>Facing north, place a red block to the right of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Text>Continue building tower by placing two blue blocks on top</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong3</SelectionIdentifier>
+                        <Text>Place a red block to the right of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Text>Facing east, place a red block to the right of the tower</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q4</QuestionIdentifier>
+        <DisplayName>Continue on giving instruction</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p> Considering the same target structure as above</p>
+                <p> The intermediate structure from the builder is the following:</p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q4.png" alt="Intermediate structure"/>
+          ]]>            </FormattedContent>
+            <Text>4. What would be an appropriate instruction to give to builder for the next step?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Text>Facing north, place a red block to the right of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Text>Remove the red block on the side of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Text>Place a yellow block to the right of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong3</SelectionIdentifier>
+                        <Text>Facing east, place a green block to the left of the tower</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q5</QuestionIdentifier>
+        <DisplayName>Continue on giving instruction</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p> Considering the same target structure as above</p>
+                <p> The intermediate structure from the builder is the following:</p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q1.png" alt="Intermediate structure"/>
+          ]]>            </FormattedContent>
+            <Text>5. What would be an appropriate instruction to give to builder for the next step?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Text>Facing north, place a blue block on top of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Text>Place a red block next to the left of tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong3</SelectionIdentifier>
+                        <Text>Facing east, place a blue block on the top of the tower</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Text>The structure is complete. No more instructions are needed</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+
+    <Question>
+        <QuestionIdentifier>Q6</QuestionIdentifier>
+        <DisplayName>Building structure</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[  
+        <p><b>Questions 6-10 are based on the role for a Builder where instructions will be provided. Please select the image that best shows the action described by the instructions</b></p>         
+        <p>6. Consider the following instruction provided by the Architect:</p>
+                <i> Place one green block </i>  
+        ]]>            </FormattedContent>
+            <Text>Using the radio button, pick the image which best reflects the structure you would have built following the Architect's instruction?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q6-op1.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q6-op2.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q6-op3.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q7</QuestionIdentifier>
+        <DisplayName>Building structure</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[         
+        <p>7. Consider the following instruction provided by the Architect:</p>
+                <i> Build a tower with three blocks. Place a blue block down and a yellow block on top of that. Place a red block on top of the yellow block</i>  
+        ]]>            </FormattedContent>
+            <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q7-op1.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q7-op2.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q7-op3.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q8</QuestionIdentifier>
+        <DisplayName>Building structure</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[         
+        <p>8. Consider the following existing structure: </p>
+        <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q8-main.png" alt="Existing structure"/>
+        <br></br>
+        <p>The Architect has provided the following instruction:</p>
+                <i> Remove the yellow block in the middle of the tower</i>  
+        ]]>            </FormattedContent>
+            <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q8-op1.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q8-op2.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q8-op3.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+     <Question>
+        <QuestionIdentifier>Q9</QuestionIdentifier>
+        <DisplayName>Building structure</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[         
+        <p>9. Consider the following existing structure: </p>
+        <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q9-main.png" alt="Existing structure"/>
+        <br></br>
+        <p>The Architect has provided the following instruction:</p>
+                <i>Facing west, place a tower of two red blocks to the right of the green block</i>  
+        ]]>            </FormattedContent>
+            <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q9-op1.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q9-op2.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q9-op3.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+     <Question>
+        <QuestionIdentifier>Q10</QuestionIdentifier>
+        <DisplayName>Building structure</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[         
+                <p>10. Consider the following existing structure: </p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q10-main.png" alt="Existing structure"/>
+                <br></br>
+                <p>The Architect has provided the following instruction:</p>
+                        <i>Facing north, place another blue block diagonally to the right of lower most blue block. </i>  
+            ]]> </FormattedContent>
+            <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>right</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q10-op1.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong1</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q10-op2.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>wrong2</SelectionIdentifier>
+                        <Binary>
+                            <MimeType>
+                                <Type>image</Type>
+                                <SubType>png</SubType>
+                            </MimeType>
+                            <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-q10-op3.png</DataURL>
+                            <AltText></AltText>
+                        </Binary>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+</QuestionForm>

@@ -1,0 +1,118 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<html>
+<style>
+  .frame {
+  height: 160px; /*can be anything*/
+  width: 160px; /*can be anything*/
+  display: inline-block;
+  vertical-align: top; /*not required*/
+  border: 1px solid black; /*not required*/
+  position: relative;
+}
+#worlddiv {
+        float: left;
+        position:relative;
+        width: 800px; 
+        height: 800px;
+      }
+#instruction_text {
+  width: 95%;
+}
+#clarifying_question {
+    width: 95%;
+}
+#instruction_cell {
+   max-width: 40em;
+}
+#picked_view {
+    position:relative;
+    width: 160px; 
+    height: 145px;
+}
+.frame span {
+  font-family: arial, sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  font-size: 12px;
+}
+</style>
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+  <script type="text/javascript">
+   function handleSubmit(txt) {
+     console.log('upload to Azure');
+     myWorld.uploadToCloud('https://iglumturkstorage.blob.core.windows.net/mturk-vw/builder-data/', 
+     'sp=racwdl&st=2021-07-01T17:41:32Z&se=2021-11-02T01:41:32Z&spr=https&sv=2020-08-04&sr=c&sig=K%2FZroQ%2FbtcPQj4bUDtfPQvV7nQm6zS06kZJm0S%2FjUoQ%3D', 
+     '$gameId', 'builder_test1', function() {
+       document.getElementById("mturk_form").submit();
+     });
+     return false;
+   }
+   function recover_world() {
+     myWorld.recoverWorldState('https://iglumturkstorage.blob.core.windows.net/mturk-vw/builder-data/', 
+     'sp=racwdl&st=2021-07-01T17:41:32Z&se=2021-11-02T01:41:32Z&spr=https&sv=2020-08-04&sr=c&sig=K%2FZroQ%2FbtcPQj4bUDtfPQvV7nQm6zS06kZJm0S%2FjUoQ%3D',
+     '$gameId', 'builder_test1')
+   }
+  </script>
+</head>
+<body>
+<table style="width:100%">
+  <tr>
+    <td valign="top" align="left" id="instruction_cell">
+    <form name='mturk_form' method='post' id='mturk_form' onsubmit="return handleSubmit()" action='https://www.mturk.com/mturk/externalSubmit'>
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+    <p align="left"><b>Try test2: Please wait! It may take some time for voxel world to load</b></p>
+    <p align="left"><b>Important: When you are done, click the 'Submit' at the bottom of the page</b></p>
+    <p><b>Execute:</b></p>
+    <p><i>$instruction</i></p>
+    <p><b>in the following block world.</b></p>
+    <div class=frame>
+        <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/target-structures/multiview/B49-A4-IGLU-26-1624451367231/view-4.png"/>
+    </div>
+    <br>
+    <label for="clear"><b>Is this instruction clear?</b></label>
+      <select id="clear" name="clarity-instruction">
+      <option value="Default"></option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <br>
+    <label for="clarifying question"><p>If the instruction is not clear, ask a clarifying question 
+    to the next architect (please note that: your question will be evaluated and if it is not reasonable and you will not be paid):</p></label>
+    <p><textarea name='comment' rows='3' maxlength='512' id='instruction_text'></textarea></p>
+      
+    <p><b>If instruction is clear use the following keyboard commands to operate in the voxel world:</b></p>
+    <ul align="left">
+      <li><b>mouse click</b> on the game area: to activate builder and see the cursor</li>
+      <li><b>w/a/s/d</b>: move forward/left/backward/right </li>
+      <li><b>shift/space</b>: Move down/up<br>
+      <li><b>mouse click</b>: break block </li>
+      <li><b>red cursor</b>: indicates where the block will be placed </li>
+      <li><b>1/2/3/4/5/6</b>: place a blue/yellow/green/orange/purple/red block </li>
+      <li><b>esc</b>: leave the Voxel world area</li>
+    <ul>
+      <p><input type='submit' id='submitButton' value='Submit' /></p></form>
+      <script language='Javascript'>
+      turkSetAssignmentID();
+      </script>
+   </td>
+    <td valign="top">
+       <div id="worlddiv"></div>
+    </td>
+  </tr>
+</table>
+<script onload="recover_world()" src="https://cdn.jsdelivr.net/gh/snyxan/myWorld@main/myWorld_option_1.js"></script> 
+</body>
+</html>
+]]>
+  </HTMLContent>
+  <FrameHeight>0</FrameHeight>
+</HTMLQuestion>

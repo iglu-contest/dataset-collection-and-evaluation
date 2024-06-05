@@ -1,0 +1,191 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+<!DOCTYPE html>
+<html>
+<style>
+  view_color {
+    background-color: #d5f4e6;
+  }
+  .frame {
+  height: 160px; 
+  width: 160px; 
+  display: inline-block;
+  vertical-align: top; /*not required*/
+  border: 1px solid black; /*not required*/
+  position: relative;
+}
+
+.frame span {
+  font-family: arial, sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  font-size: 12px;
+}
+
+#instruction_text {
+  width: 95%;
+}
+
+#instruction_cell {
+   max-width: 40em;
+}
+
+#clarifying_answer {
+   width: 95%;
+}
+
+#picked_view {
+    position:relative;
+    width: 160px; 
+    height: 145px;
+}
+
+#target_view {
+    position:relative;
+    width: 160px; 
+    height: 145px;
+}
+
+figure {
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+}
+
+td {
+vertical-align: top;
+text-align: left;
+}
+
+</style>
+ <head>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+ </head>
+ <body>
+
+<table style="width:100%">
+  <tr>
+  <td valign="top" align="left" id="instruction_cell">
+  <h3>Instructions:</h3>
+  <p> The goal of this HIT is to give a short instruction to a builder explaining what blocks to 
+      place to progress from the current structure depicted in the lower section of images towards 
+      the target structure depicted in the upper section of images. The images in the upper and lower 
+      sections depict different views of target and currently built structures, respectively.
+  </p>
+  <p>
+  You can assume that the builder that will follow your instructions has the following capabilities:
+  </p>
+           <ul>
+               <li><b>Move</b> (the builder can be told to move around game area)</li>
+               <li><b>Build</b> (the builder can be told to place blocks of different colors)</li>
+               <li><b>Destroy</b> (the builder can be told to destroy things)</li>
+           </ul>
+  <p> Further notes:</p>
+        <ul>
+            <li> Give the instructions with the understanding that the builder <em>cannot</em> see the target structure. 
+            Only a <em>single view</em> of the currently built structure will be available to them. This view will be selected by you. </li>
+            <li> Make sure to choose (and keep in mind) the <view_color> view of the current structure on which your instruction is based </view_color>. This is how the builder will be oriented. 
+            If it is the first instruction in a game, views contain only a grid. In this case, pick 'North.' View 'Top' is there for your orientation and cannot be picked along with instruction.</li>
+            <li> The instruction should be about a minutes worth of work for the builder to complete. </li>
+            <li> Please use grammatical English in your instructions. </li>
+            <li> If the current structure is already the same as the target, mark it so. </li>
+      </ul>
+  </td>
+  <td align="left">
+    <p align="left"><b>Target structure from different perspectives:</b></p>
+    <div class=frame>
+      <figcaption>North</figcaption>
+      <img id="target_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/target-structures/multiview/$structureId/view-north.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>South</figcaption>
+      <img id="target_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/target-structures/multiview/$structureId/view-south.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>West</figcaption>
+      <img id="target_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/target-structures/multiview/$structureId/view-west.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>East</figcaption>
+      <img id="target_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/target-structures/multiview/$structureId/view-east.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>Top</figcaption>
+      <img id="target_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/target-structures/multiview/$structureId/view-top.png"/>
+    </div>
+
+  <p align="left"><b>Current structure built so far (<view_color> base your instruction on one of these views)</view_color>: </b></p>
+    <div class=frame>
+      <figcaption>North</figcaption>
+      <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotPath$north.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>South</figcaption>
+      <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotPath$south.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>West</figcaption>
+      <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotPath$west.png"/>
+    </div>
+    <div class=frame>
+      <figcaption>East</figcaption>
+      <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotPath$east.png"/>
+    </div>
+      <div class=frame>
+      <figcaption>Top</figcaption>
+      <img id="picked_view" src="https://iglumturkstorage.blob.core.windows.net/mturk-vw/$builderDataPath/$screenshotPath$top.png"/>
+    </div>
+  
+
+    <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+    <br>
+
+    <label for="IsBuiltStructureComplete" align="left"><b>Is the current structure exactly like the target structure?</b> Pick 'yes' only if the images of current structure in the bottom row match that of the structure to the target one in the upper row. </label>
+        <select id="IsBuiltStructureComplete" name="IsBuiltStructureComplete">
+        <!-- <option value="default"></option> -->
+        <option value="dontknow">I do not know</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+        </select>
+
+    <p>
+    <label for="views"><b> <view_color>Choose the viewpoint on which you based your instruction on</view_color>:</b></label>
+        <select id="views" name="views">
+        <option value=default></option>
+        <option value="north">North</option>
+        <option value="south">South</option>
+        <option value="west">West</option>
+        <option value="east">East</option>
+        <option value="top">Top</option>
+        </select>
+    </p>
+
+    <p><b>Provide an instruction for what the builder should do next to progress to the target:</b></p>
+    <p><textarea name='instruction' rows='4' maxlength='512' id='instruction_text'></textarea></p>
+
+
+    <p><b>When you are done, click the 'Submit' button</b></p>
+    <p><input type='submit' id='submitButton' value='Submit' /></p></form>
+    <script language='Javascript'>turkSetAssignmentID();</script>
+
+    </td>
+  </tr>
+</table>
+
+ </body>
+</html>
+]]>
+  </HTMLContent>
+  <FrameHeight>0</FrameHeight>
+</HTMLQuestion>

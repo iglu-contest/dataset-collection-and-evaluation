@@ -1,0 +1,185 @@
+<QuestionForm xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd'>  
+   <Question>
+      <QuestionIdentifier>consent</QuestionIdentifier>
+      <DisplayName>Consent Form</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <b>Important:</b> Before proceeding, please check the consent form. To pass the qualification test, you need to agree, otherwise, we cannot collect data from your study! 
+                <p><a href="https://drive.google.com/file/d/1Dzje42PIJ5VU68EN6pM9s4OSaZDaRST2/">So please click here the consent form:</a>,
+                to indicate if you understand and agree with the terms of the study</p>
+          ]]></FormattedContent>
+    <Text> Do you understand and consent to these terms? </Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>consent_agree</SelectionIdentifier>
+              <Text>I agree</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+  <Question>
+      <QuestionIdentifier>rules</QuestionIdentifier>
+      <DisplayName>Rules</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <b>Important:</b> Before proceeding, please read. To pass the qualification test, you need to agree, otherwise, we cannot collect data from your study! 
+                <p><a href="https://drive.google.com/file/d/1Dzje42PIJ5VU68EN6pM9s4OSaZDaRST2/">So please click here the consent form:</a>,
+                to indicate if you understand and agree with the terms of the study</p>
+          ]]></FormattedContent>
+    <Text> Do you understand the the rules above? </Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>rules_agree</SelectionIdentifier>
+              <Text>I understand</Text>
+              <SelectionIdentifier>rules_disagree</SelectionIdentifier>
+              <Text>I do not understand</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+
+    <Question>
+      <QuestionIdentifier>first_intruction</QuestionIdentifier>
+      <DisplayName>Initial Intruction</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <p>
+                Please help us instruct an imaginary builder to build a given structure in a 3-D voxel world environment. 
+                You will be shown: the target structure and a partially built structure.
+                You are being asked to describe in plain text, how to get from the intermediate structure towards having the final structure. 
+                Please know that a builder will follow your instruction blindly without seeing a target structure and will have 45 seconds to complete the task. Make your instruction as atomic and doable as possible
+                </p>
+                <p>
+                Imagine this is a creative game, and the builder has access to unlimited blocks of certain kinds. 
+                Your goal is to get them to go from the intermediate structure to the target one in the fewest number of steps. 
+                Make sure your instructions are understandable and succinct, and in English. 
+                The builder will only have access to your instruction, the picture of the intermediate stage of the structure, and 45 seconds to execute the instructions.
+                </p>
+                <h3> Please note that you will only get paid if you: </h3>
+                <ul>
+                   <li> Write understandable and succinct English instructions.</li>
+                   <li> The instructions you submit should help get as close to the target structure as possible.</li>
+                   <li> Sometimes, the previous builder might have asked a clarifying question. 
+                   You should answer the question to clarify the previous instruction so that the builder can accomplish it.</li>
+                   <li>Click on "Submit" button at the bottom.</li>
+                </ul>   
+                <h3>Follow an example below where the target structure is:</h3>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-5-target.png" alt="Target structure"/>
+                
+          ]]></FormattedContent>
+    <Text>What would an appropriate first instruction start with?</Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>right</SelectionIdentifier>
+              <Text>make a tower with yellow block at bottom, 
+              blue block on top of that and then an orange block on top</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>wrong1</SelectionIdentifier>
+              <Text>make a tower consisting of two blocks with a red block at the bottom</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>wrong2</SelectionIdentifier>
+              <Text>make a tower consisting of two blocks with a red block at the bottom</Text>
+            </Selection>
+              <Selection>
+              <SelectionIdentifier>wrong3</SelectionIdentifier>
+              <Text>put green block on top of yellow one</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+
+   <Question>
+      <QuestionIdentifier>second_instruction</QuestionIdentifier>
+      <DisplayName>Continue on giving instructions</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <p> Imagine you have the same target structure as above.</p>
+                <h3> The intermediate structure from the builder is the following:</h3>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-2.png" alt="Intermediate structure"/>
+                
+          ]]></FormattedContent>
+    <Text>What would be an appropriate instruction to give to builder for the next step?</Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>wrong1</SelectionIdentifier>
+              <Text>continue building a tower by placing two red blocks on top of each other</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>wrong2</SelectionIdentifier>
+              <Text>put green block on the side</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>right</SelectionIdentifier>
+              <Text>put the purple block on top of yellow one</Text>
+            </Selection>
+              <Selection>
+              <SelectionIdentifier>wrong3</SelectionIdentifier>
+              <Text>put two blue block on top of each other</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+
+  <Question>
+      <QuestionIdentifier>complete_structure</QuestionIdentifier>
+      <DisplayName>Continue on giving instruction</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <p> Imagine you have the same target structure as above.</p>
+                <h3> The intermediate structure from the builder is the following:</h3>
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-4.png" alt="Intermididate structure"/>
+          ]]></FormattedContent>
+    <Text>What would be an appropriate instruction to give to builder for the next step?</Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>wrong1</SelectionIdentifier>
+              <Text>continue building a tower by placing two red blocks on top of each other</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>wrong2</SelectionIdentifier>
+              <Text>continue building tower by placing two more orange blocks on top</Text>
+            </Selection>
+              <Selection>
+              <SelectionIdentifier>wrong3</SelectionIdentifier>
+              <Text>put two purple blocks on top on the blue one</Text>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>right</SelectionIdentifier>
+              <Text>The structure is complete. No more instructions are needed</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+</QuestionForm>

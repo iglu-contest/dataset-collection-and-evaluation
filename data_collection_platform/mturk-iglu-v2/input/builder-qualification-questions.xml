@@ -1,0 +1,196 @@
+<QuestionForm xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd'>  
+  <Question>
+      <QuestionIdentifier>consent</QuestionIdentifier>
+      <DisplayName>Consent Form</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <p><a href="https://drive.google.com/file/d/1Dzje42PIJ5VU68EN6pM9s4OSaZDaRST2/">Click to read concent form</a>,
+                indicate if you understand and agree.</p>
+          ]]></FormattedContent>
+    <Text> Do you understand and consent to these terms? </Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>consent_agree</SelectionIdentifier>
+              <Text>I agree</Text>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+  <Question>
+      <QuestionIdentifier>first_intruction</QuestionIdentifier>
+      <DisplayName>Q1</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+                <p>
+                Would you please help us build what is instructed in the given instruction set in 45 seconds? 
+                Imagine you are playing a creative game in a 3-D voxel world, and you have unlimited access to blocks of certain kinds. 
+                You will be instructed to follow verbatim (written in plain text) and are required to build things as instructed. 
+                You have 45 seconds to complete the task.
+                You would need use <b>'w/a/s/d'</b> to move <b>'forward/left/back/right'</b>,
+                <b>'space'</b> to jump, <b>'double space'</b> to fly, <b>'shift'</b> to return to earch after flying
+                and <b>'esc'</b> to leave the world and back to the website.
+                </p>
+                <h3> That is how the Builder should look in action:</h3> 
+                <img src="https://iglumturkstorage.blob.core.windows.net/qualification-test/demo.gif" alt="Builder demo"/>
+                <h3> Please note that you will only get paid if you: </h3>
+                <ul>
+                   <li>Click on "Submit" button at the bottom.</li>
+                </ul> 
+                <p>If an Architect has given the following instruction:</p>
+                <i> Place a one green block </i>  
+          ]]></FormattedContent>
+    <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>right</SelectionIdentifier>
+                <Binary>
+                  <MimeType>
+                  <Type>image</Type>
+                  <SubType>png</SubType>
+                  </MimeType>
+                <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-one-green-block.png</DataURL>
+                <AltText></AltText>
+                </Binary>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>wrong1</SelectionIdentifier>
+                <Binary>
+                  <MimeType>
+                  <Type>image</Type>
+                  <SubType>png</SubType>
+                  </MimeType>
+                <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-2.png</DataURL>
+                <AltText></AltText>
+                </Binary>
+            </Selection>
+              <Selection>
+              <SelectionIdentifier>wrong2</SelectionIdentifier>
+              <Binary>
+                  <MimeType>
+                  <Type>image</Type>
+                  <SubType>png</SubType>
+                  </MimeType>
+                <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-1.png</DataURL>
+                <AltText></AltText>
+                </Binary>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>
+   <Question>
+      <QuestionIdentifier>second_intruction</QuestionIdentifier>
+      <DisplayName>Q2</DisplayName>
+      <IsRequired>true</IsRequired>
+      <QuestionContent>
+          <FormattedContent><![CDATA[
+               <p> If an Architect has given the following instruction:</p> 
+               <i> Place two purple block one block away from the red tower</i> 
+          ]]></FormattedContent>
+    <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+      </QuestionContent>
+      <AnswerSpecification>
+        <SelectionAnswer>
+          <StyleSuggestion>radiobutton</StyleSuggestion>
+          <Selections>
+            <Selection>
+              <SelectionIdentifier>right</SelectionIdentifier>
+                <Binary>
+                  <MimeType>
+                  <Type>image</Type>
+                  <SubType>png</SubType>
+                  </MimeType>
+                <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-3redtower-2purle.png</DataURL>
+                <AltText></AltText>
+                </Binary>
+            </Selection>
+            <Selection>
+              <SelectionIdentifier>wrong1</SelectionIdentifier>
+                <Binary>
+                  <MimeType>
+                  <Type>image</Type>
+                  <SubType>png</SubType>
+                  </MimeType>
+                <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-5-target.png</DataURL>
+                <AltText></AltText>
+                </Binary>
+            </Selection>
+              <Selection>
+              <SelectionIdentifier>wrong2</SelectionIdentifier>
+              <Binary>
+                  <MimeType>
+                  <Type>image</Type>
+                  <SubType>png</SubType>
+                  </MimeType>
+                <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-gren-then-two-oranges.png</DataURL>
+                <AltText></AltText>
+                </Binary>
+            </Selection>
+          </Selections>
+        </SelectionAnswer>
+      </AnswerSpecification>
+  </Question>   
+  <Question>
+    <QuestionIdentifier>third_intruction</QuestionIdentifier>
+    <DisplayName>Q3</DisplayName>
+    <IsRequired>true</IsRequired>
+    <QuestionContent>
+        <FormattedContent><![CDATA[
+             <p> If an Architect has given the following instruction:</p> 
+             <i> Place two orange blocks on top of green one and then place yellow block on top</i>
+        ]]></FormattedContent>
+  <Text>Using the radio button, pick which picture reflects the structure you would have built following the Architect's instruction?</Text>
+    </QuestionContent>
+    <AnswerSpecification>
+      <SelectionAnswer>
+        <StyleSuggestion>radiobutton</StyleSuggestion>
+        <Selections>
+          <Selection>
+            <SelectionIdentifier>wrong1</SelectionIdentifier>
+              <Binary>
+                <MimeType>
+                <Type>image</Type>
+                <SubType>png</SubType>
+                </MimeType>
+              <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-4.png</DataURL>
+              <AltText></AltText>
+              </Binary>
+          </Selection>
+            <Selection>
+            <SelectionIdentifier>wrong2</SelectionIdentifier>
+            <Binary>
+                <MimeType>
+                <Type>image</Type>
+                <SubType>png</SubType>
+                </MimeType>
+              <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-gren-then-two-oranges.png</DataURL>
+              <AltText></AltText>
+              </Binary>
+          </Selection>
+          <Selection>
+            <SelectionIdentifier>right</SelectionIdentifier>
+              <Binary>
+                <MimeType>
+                <Type>image</Type>
+                <SubType>png</SubType>
+                </MimeType>
+              <DataURL>https://iglumturkstorage.blob.core.windows.net/qualification-test/iglu-gren-then-two-oranges-than-yellow.png</DataURL>
+              <AltText></AltText>
+              </Binary>
+          </Selection>
+        </Selections>
+      </SelectionAnswer>
+    </AnswerSpecification>
+</Question>
+</QuestionForm>
