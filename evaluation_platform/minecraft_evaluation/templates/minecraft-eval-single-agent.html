@@ -1,0 +1,171 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+    <!DOCTYPE html>
+      <head>
+        <!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries -->
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
+                integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script>
+        <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+              integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+        <script>
+          function instructionAccordionListener(divId) {
+            // Instructions expand/collapse
+            var content = $('#' + divId);
+            content.toggle();
+            var isVisible = content.is(':visible');
+            var collapseText = $('#' + divId + '-collapse-text');
+            if(isVisible){
+              collapseText.text('(Click to collapse)');
+            }else{
+              collapseText.text('(Click to expand)');
+            }
+          }
+        </script>
+        <style type="text/css">
+          .collapse-trigger{
+            color:#fff;
+            display: block;
+            text-decoration: none;
+          }
+          #submitButton{
+            white-space: normal;
+          }
+          .image{
+            margin-bottom: 15px;
+          }
+          /* CSS for breaking long words/urls */
+          .dont-break-out {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            -ms-word-break: break-all;
+            word-break: break-all;
+            word-break: break-word;
+            -ms-hyphens: auto;
+            -moz-hyphens: auto;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+          }
+        </style>
+      </head>
+      <body>
+      <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+      <div class="container" id="instructions">
+        <crowd-form>
+        <!-- Instructions -->
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <div class="panel panel-primary">
+                <div class="panel-body" id="task-description-div">
+                  <p>
+                    We invite you to complete a collaborative building task on Minecraft playing against an artificial intelligent Agent.
+                  </p>
+                  <p>
+                    You'll have to open minecraft and connect to a particular server. Once there, you will instroduce the code
+                    given in this HIT and will be teleported to a world where the task till begin.
+                    You will see a target structure composed of blocks, and the another player, called the <i>Builder</i>.
+                  </p>
+                  <p>
+                    The goal of this HIT is to give short instructions to the Builder explaining what blocks to
+                    place or remove to progress from the current structure towards
+                    the target structure you can see behind the wall.
+                  </p>
+                  <p>
+                    <strong>Make sure to leave this window open as you complete the survey. </strong>
+                    When you are finished, you will return to this page to paste the completioncode into the box.
+                  </p>
+                </div>
+              </div>
+              <div class="panel panel-primary">
+                <a class="panel-heading collapse-trigger" href="javascript:void(0);" id="task-instructions-div-collapse-trigger"
+                  onclick="instructionAccordionListener('task-instructions-div')">
+                  <strong>Task instructions</strong>
+                  <span id="task-instructions-div-collapse-text">(Click to expand)</span>
+                </a>
+                <div class="panel-body" id="task-instructions-div">
+                  <p>
+                    When you open Minecraft and introduce the code below, you'll see a target structure behind a glass wall, and the
+                    <i>Builder</i>. The builder cannot see the structure behind the glass wall.
+                  </p>
+                  <p>
+                    TODO: Explain what turns are
+                  </p>
+                  <p>
+                    TODO: it would be nice to insert here a couple of images or gifs.
+                  </p>
+                  <p>
+                    The task will only last for 3 turns, but you should not aim to complete the structure, just get as far as you can.
+                    You can end the agent's turn at any time, for example if it's no doing useful actions, by entering the command
+                    <code>/end-turn</code>.
+                  </p>
+                </div>
+                <a class="panel-heading collapse-trigger" href="javascript:void(0);" id="minecraft-instructions-div-collapse-trigger"
+                  onclick="instructionAccordionListener('minecraft-instructions-div')">
+                  <strong>Minecraft connection instructions</strong>
+                  <span id="minecraft-instructions-div-collapse-text">(Click to expand)</span>
+                </a>
+                <div class="panel-body" id="minecraft-instructions-div">
+                  <p>
+                    TODO: how to connect to Minecraft
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Instructions -->
+
+          <!-- Join code -->
+          <div class="row" id="workContent">
+            <div class="col-xs-12 col-md-6 col-md-offset-3"><!-- Content for Worker -->
+              <table class="table table-condensed table-bordered">
+                <colgroup>
+                  <col class="col-xs-4 col-md-4" />
+                  <col class="col-xs-8 col-md-8" />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td><span>Join Command:</span></td>
+                    <td><span>$joinCode</span></td>
+                  </tr>
+                  <tr>
+                    <td><span>Agent:</span></td>
+                    <td><span>$agentName</span></td>
+                  </tr>
+                  <tr>
+                    <td><span>Task:</span></td>
+                    <td><span>$taskName</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- End join code -->
+
+          <!-- START FORM -->
+          <crowd-input name="completionCode" label="Completion code" placeholder="Paste completion code here" required ></crowd-input>
+          <crowd-input name="generalFeedback" label="General feedback" placeholder="Some words about how the agent acted" required ></crowd-input>
+
+          <!-- Hidden data fields to map completion code to join code -->
+          <div style="display: None">
+            <crowd-input name="joinCode" value="$joinCode"></crowd-input>
+          </div>
+        </crowd-form>
+      </div> <!-- End container -->
+
+        <script>
+          // end expand/collapse
+          $(document).ready(
+            function (divId) {
+              instructionAccordionListener('task-instructions-div');
+              instructionAccordionListener('minecraft-instructions-div');
+            }
+          );
+        </script>
+      </body>
+    </html>
+  ]]></HTMLContent>
+  <FrameHeight>0</FrameHeight>
+</HTMLQuestion>

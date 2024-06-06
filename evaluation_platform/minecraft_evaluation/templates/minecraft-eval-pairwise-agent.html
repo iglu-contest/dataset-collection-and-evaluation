@@ -1,0 +1,369 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+    <!DOCTYPE html>
+    <head>
+      <!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries -->
+      <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+          crossorigin="anonymous">
+      </script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
+              integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
+      <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+            integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+      <script>
+        // Assignment expiration
+        expirationDateTimeMs = Date.now() + 1200 * 1000;
+
+        function instructionAccordionListener(divId) {
+          // Instructions expand/collapse
+          var content = $('#' + divId);
+          content.toggle();
+          var isVisible = content.is(':visible');
+          var collapseText = $('#' + divId + '-collapse-text');
+          if(isVisible){
+            collapseText.text('(Click to collapse)');
+          }else{
+            collapseText.text('(Click to expand)');
+          }
+        }
+
+        function joinCodeGeneration(codeDivId, prefix) {
+          var div = $('#' + codeDivId);
+          // Is hit preview?
+          if (document.location.href.indexOf('assignmentId=ASSIGNMENT_ID_NOT_AVAILABLE') === -1) {
+            var code = prefix + ':' + expirationDateTimeMs.toString();
+            div.html("<h4>" + code + "</h4>");
+          } else {
+            div.html("<h4>You need to accept the hit to see the code</h4>");
+          }
+        }
+
+        function disableSubmission() {
+          code1 = $("#completionCode1Input").val();
+          code2 = $("#completionCode2Input").val();
+          if (code1 == code2) {
+            $('#completion-code1-error').text('Duplicated code');
+            $('#completion-code2-error').text('Duplicated code');
+            $('*[form-action="submit"]')[0].disabled = true;
+            return;
+          }
+          code1_validation = validateCode(code1);
+          if (!code1_validation) {
+            $('#completion-code1-error').text(
+              'Invalid completion code. Input a valid code to submit the HIT.');
+            console.log('Code 1 incorrect');
+          } else {
+            console.log('Code 1 correct');
+            $('#completion-code1-error').text('');
+          }
+
+          code2_validation = validateCode(code2);
+          if (!code2_validation) {
+            $('#completion-code2-error').text(
+              'Invalid completion code. Input a valid code to submit the HIT.');
+            console.log('Code 2 incorrect');
+          } else {
+            $('#completion-code2-error').text('');
+            console.log('Code 2 correct');
+          }
+
+          if (code1_validation && code2_validation) {
+            $('*[form-action="submit"]')[0].disabled = false;
+          } else {
+            $('*[form-action="submit"]')[0].disabled = true;
+          }
+        }
+
+        function validateCode(completionCode) {
+          try {
+            var gezipedData = atob(completionCode);
+            var ungzipedData = pako.ungzip(Uint8Array.from(gezipedData, c => c.charCodeAt(0)));
+
+            var decodedCompletionCode = new TextDecoder().decode(ungzipedData);
+          } catch (error) {
+            return false;
+          }
+
+          var decodedCompletionCode = new TextDecoder().decode(ungzipedData);
+          var codeSections = decodedCompletionCode.split(':');
+          var sectionsLen = codeSections.map(w => w.length);
+          return (codeSections.length == 7 && sectionsLen[0] == sectionsLen[2]
+          && sectionsLen[0] == sectionsLen[3] && sectionsLen[0] == sectionsLen[4]
+          && sectionsLen[0] == sectionsLen[5] && sectionsLen[0] == sectionsLen[6]
+          && sectionsLen[1] == 2 && sectionsLen[5] == 36);
+        }
+
+      </script>
+      <style type="text/css">
+        .collapse-trigger{
+          color:#fff;
+          display: block;
+          text-decoration: none;
+        }
+        #submitButton{
+          white-space: normal;
+        }
+        .image{
+          margin-bottom: 15px;
+        }
+        /* CSS for breaking long words/urls */
+        .dont-break-out {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          -ms-word-break: break-all;
+          word-break: break-all;
+          word-break: break-word;
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
+        }
+        .checkbox {
+          margin: 8px;
+        }
+        .section {
+          margin-top: 30px;
+        }
+        .form-div-instruction {
+          margin-top: 20px;
+          margin-bottom: 0px;
+        }
+        .instructions-screenshot {
+          width: 500px;
+          margin: 10 10 20 20;
+        }
+        .joincode-div {
+          margin-bottom: 20px;
+        }
+        .completion-code-error {
+          color: red;
+        }
+      </style>
+    </head>
+    <body>
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+    <div class="container" id="instructions">
+      <crowd-form>
+        <!-- Instructions -->
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <div class="panel panel-primary">
+              <a class="panel-heading collapse-trigger" href="javascript:void(0);" id="task-instructions-div-collapse-trigger"
+                onclick="instructionAccordionListener('task-instructions-div')">
+                <strong>Task instructions</strong>
+                <span id="task-instructions-div-collapse-text">(Click to collapse)</span>
+              </a>
+              <div class="panel-body" id="task-instructions-div">
+                <p>
+                  We invite you to complete a collaborative building task on Minecraft playing against an artificial intelligent Agent.
+                </p>
+                <h3>STEP 1: START THE GAME</h3>
+                <h4> Connect to server </h4>
+                <p>
+                  You'll have to open minecraft and connect to our server. If have not done it before,
+                  click in "Multiplayer" -> "Add server" and input <code>20.118.146.237</code> in the Server Address field.
+                </p>
+                <h4> Enter join code </h4>
+                <p>
+                  Copy the code shown in the HIT to join the first game. It starts with <code>/plaiground:join-task-with-agent</code> followed by many numbers and letters.
+                  The code will expire in 5 minutes, and you won't be able to join the game.
+                </p>
+                <p>
+                  Once you are in the lobby, start a chat message and introduce the first code given in this HIT, including the initial <code>/</code>.
+                  You will be teleported to a world where the task will begin.
+                  <strong>After 10 minutes, you will be removed from the game.</strong> Even if that happens, you will have the possibility to copy the completion code
+                </p>
+                <h4> Recognize the different structures </h4>
+                <p>
+                  You will see two diamond zones to your left (target zone) and right (building zone), the cardinal points in the
+                  floor surrounding the building zone and the agent in the corner of the building zone.
+                </p>
+                <img class="instructions-screenshot" src="https://images2.imgbox.com/4c/5a/M9wTR0Rf_o.jpeg" alt="image host"/>
+
+                <p>
+                  The objective is to replicate the target structure in the building zone.
+                  The agent will be able to move and place block on the building zone only. You will be able to move freely but can't place or remove blocks.
+                  You have to give short instructions to the Agent explaining what blocks to place or remove to progress from the current structure towards
+                  the target structure you can see on the left.
+                </p>
+                <p><strong>If you have troubles using the join code</strong>, like an error saying there is no free agent, try again in a couple minutes or
+                  try with the join code for the other agent. The agent should become available in 10 minutes at most.
+                </p>
+                <h3>STEP 2: GIVE INSTRUCTIONS</h3>
+                <strong>Make sure to leave this window open as you complete the survey.</strong>
+                <p>
+                  To give instructions, send a chat message.
+                  <ul>
+                    <li>You can send more than one chat messages if you have a long instruction, but keep it short.</li>
+                    <li>Your instructions must specify the <b>color</b> and <b>position</b> of all the blocks to place or remove.</li>
+                    <li>Use positions using the cardinal points. Avoid phrases like <i>to your right</i>, instead use <i>towards West</i>.</li>
+                    <li>Avoid referring to the agent's past actions, with instructions like <i>Go back</i>, <i>Remove the blocks you placed</i>. The agent has no memory.</li>
+                  </ul>
+                </p>
+                <p>
+                  Examples of correct instructions:
+                  <ul>
+                    <li><i>Place three red blocks horizontally in the North-East corner. Follow the shape of the corner.</i></li>
+                    <li><i>Destroy the top block on top of the green column placed in the center of the grid.</i></li>
+                    <li><i>Walk three blocks towards North and two blocks West. Build a row at the level of the floor with 5 yellow blocks, going from West to East.</i></li>
+                    <li><i>The structure will look like a yellow and orange wall. Place a yellow of 3 red blocks from North to South in the center of the grid.
+                      Then place 3 orange blocks aligned on top.</i></li>
+                  </ul>
+                </p>
+                <p>
+                  The Agent will not act until you enter the command <code>/end-turn</code>. You will see a message on the screen telling you it's the agent's (builder) turn. When the agent finishes
+                  completing its actions, you will see a new message saying is your (architect) turn again. Repeat the process giving more instructions.
+                </p>
+                <img class="instructions-screenshot" src="https://images2.imgbox.com/d5/91/jmAIuVIL_o.jpg" alt="View of the messages in the Minecraft game."/>
+                <p>
+                  <strong>The hit will only be approved if you complete at least three turns. This means you used the command <code>/end-turn</code> 3 times.</strong>
+                  If the agent does not follow your instruction, simplify or repeat it with a different wording.
+                  If you give correct and easy to follow instructions in English, the HIT will be approved regardless of how well the agent executes them.
+                </p>
+                <h3>STEP 3: COPY THE COMPLETION CODE</h3>
+                <p>
+                  When you are finished with your instructions, enter the command <code>/finish-game</code>.
+                  This will take you back to the lobby and show you a message explaining how to copy the completion code.
+                </p>
+                <ol>
+                  <li>Press <code>t</code> to access your chat history.</li>
+                  <li>Click the yellow link.</li>
+                  <li>Press <code>CTRL+a</code> and <code>CTRL+v</code> to copy the code.</li>
+                  <li>When you have it, return to this page to paste the completion code into the corresponding textbox.</li>
+                </ol>
+                <h3>STEP 4: GIVE FEEDBACK</h3>
+                <p>
+                  In the next textbox, describe in short sentences what the agent did <strong>wrong</strong>. Specify 3 aspects at most.
+                  For example: <i>it placed blocks of the wrong position or color. It placed too many blocks.</i>
+                </p>
+                <h3>STEP 5: COMPARE THE AGENTS</h3>
+                <p>
+                  Repeat steps 2 to 4 for the second agent. You will see the same structure as in the first game.
+                </p>
+                <p>Last, select which agent you think did a better job, even if none of them was able to complete the structure.</p>
+                <h3>STEP 6: SUBMIT</h3>
+                <p><b>Please note that you will only get paid if you:</b></p>
+                <ul>
+                    <li>Play at least 3 turns.</li>
+                    <li>Write understandable and concise English instructions.</li>
+                    <li>Copy the two valid completion codes provided by the Minecraft server into the HIT.
+                        We will check if you use the same code twice, even from a previous HIT. This HIT won't be approved and you will be blocked from this task.</li>
+                    <li>Click on the <b>"Submit"</b> button at the bottom.</li>
+                    <li>The explained actions are in "instructions format" and  informative enough to allow someone else to complete the structure.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Instructions -->
+
+        <!-- AGENT 2 -->
+        <!-- Join code -->
+        <div class="row section">
+          <div class="col-md-12"><!-- Join code 1 -->
+            <h3>First agent</h3>
+            <p><strong>STEP 2</strong>: Join code for second game. Paste the code in Minecraft and play the game as described in the instructions.</p>
+            <div id="joincode1-div" class="joincode-div">
+              <button type="button" class="btn btn-info" onclick="joinCodeGeneration('joincode1-div', '$joinCode1')">
+                Click here to see the code
+              </button>
+            </div>
+            <p>Remember to play <strong>at least 3</strong> turns. You only have <strong>10 minutes</strong> to finish the game.
+              If the agent does not follow your instructions or you cannot complete the structure, don't worry.
+              As long as the instructions were clear and you played the 3 turns, the hit will be approved.</p>
+        </div>
+        <!-- End join code -->
+
+        <!-- START FORM -->
+        <div class="row">
+          <div class="col-md-12">
+            <p class="form-div-instruction"><strong>STEP 3</strong>: Paste completion code for first game here.</p>
+            <p>The completion code looks like a longer version of this
+              <code>H4sIAAAAAAAA/w3M2QkAIQwA0YoCOddoNzFH/yWsnwOPMepirQ3pPKDkCuEvKVX22JZreSIPN1+SpG7OXPmB4Wns1ngAAAA</code>
+            </p>
+            <crowd-input id="completionCode1Input" name="completionCode1" label="Completion code"
+              placeholder="Paste the completion code here" required onChange="disableSubmission();"></crowd-input>
+            <p class="completion-code-error" id="completion-code1-error"></p>
+
+            <p class="form-div-instruction"><strong>STEP 4</strong>: Give feedback. Describe at most 3 aspects of incorrect behavior of agent 1.</p>
+            <crowd-input name="agent1_performance" label="Feedback on agent 1 performance"
+              placeholder="" required >
+            </crowd-input>
+
+          </div>
+        </div>
+
+        <!-- AGENT 2 -->
+        <!-- Join code -->
+        <div class="row section" style="margin-top: 80px">
+          <div class="col-md-12"><!-- Content for Worker -->
+            <h3>Second agent</h3>
+            <p><strong>STEP 2</strong>: Join code for second game. Paste the code in Minecraft and play the game as described in the instructions.</p>
+            <div id="joincode2-div" class="joincode-div">
+              <button type="button" class="btn btn-info" onclick="joinCodeGeneration('joincode2-div', '$joinCode2')">
+                Click here to see the code
+              </button>
+            </div>
+            <p>Remember to play <strong>at least 3</strong> turns. You only have <strong>10 minutes</strong> to finish the game.
+              If the agent does not follow your instructions or you cannot complete the structure, don't worry.
+              As long as the instructions were clear and you played the 3 turns, the hit will be approved.</p>
+          </div>
+        </div>
+        <!-- End join code -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <p class="form-div-instruction"><strong>STEP 3</strong>: Paste completion code for second game here.</p>
+            <p>The completion code looks like a longer version of this
+              <code>H4sIAAAAAAAA/w3M2QkAIQwA0YoCOddoNzFH/yWsnwOPMepirQ3pPKDkCuEvKVX22JZreSIPN1+SpG7OXPmB4Wns1ngAAAA</code>
+            </p>
+            <crowd-input id="completionCode2Input" name="completionCode2" label="Completion code"
+              placeholder="Paste the completion code here" required onChange="disableSubmission();"></crowd-input>
+            <p class="completion-code-error" id="completion-code2-error"></p>
+
+            <p class="form-div-instruction"><strong>STEP 4</strong>: Give feedback. Describe at most 3 aspects of incorrect behavior of agent 2.</p>
+            <crowd-input name="agent2_performance" label="Feedback on agent 2 performance"
+              placeholder="" required >
+            </crowd-input>
+
+          </div>
+        </div>
+
+        <div class="row section">
+          <div class="col-md-12">
+            <h3>Select best agent</h3>
+            <p class="form-div-instruction">If you had to choose between the two agents, which one would you say is best?</p>
+            <div>
+              <input type="radio" id="agent1_option" name="best_agent" value="agent1_option" required>
+              <label for="agent1_option">Agent 1</label>
+            </div>
+            <div>
+              <input type="radio" id="agent2_option" name="best_agent" value="agent2_option">
+              <label for="agent2_option">Agent 2</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden data fields to map completion code to join code -->
+        <div style="display: None">
+          <crowd-input name="joinCode1" value="$joinCode1"></crowd-input>
+          <crowd-input name="joinCode2" value="$joinCode2"></crowd-input>
+        </div>
+      </crowd-form>
+    </div> <!-- End container -->
+
+      <script>
+        // end expand/collapse
+        $(document).ready(
+          function (divId) {
+
+          }
+        );
+      </script>
+    </body>
+    </html>
+  ]]></HTMLContent>
+  <FrameHeight>0</FrameHeight>
+</HTMLQuestion>

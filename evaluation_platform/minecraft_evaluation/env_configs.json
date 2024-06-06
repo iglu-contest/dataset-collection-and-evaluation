@@ -1,0 +1,36 @@
+{
+    "production": {
+        "mturk_endpoint": "https://mturk-requester.us-east-1.amazonaws.com",
+        "mturk_preview": "https://www.mturk.com/mturk/preview",
+        "hits_table_name": "MinecraftEvaluationGames",
+        "result_game_data_container_name": "mturk-minecraft-evaluation",
+        "result_game_data_blob_prefix": "gamedata",
+        "hit_config": {
+            "qualification_type_id": "<QUALIFICATION_TYPE_ID>",
+            "hit_lifetime_seconds": 1800,
+            "reward": "4",
+            "keywords": "iglu, agent, minecraft, artificial intelligence, natural language",
+            "auto_approval_delay_seconds": 3600,
+            "assignment_duration_in_seconds": 1200,
+            "title": "IGLU - Play Minecraft game!",
+            "description": "Play with and AI agent in Minecraft and complete a short survey."
+        }
+    },
+    "sandbox": {
+        "mturk_endpoint": "https://mturk-requester-sandbox.us-east-1.amazonaws.com",
+        "mturk_preview": "https://workersandbox.mturk.com/mturk/preview",
+        "hits_table_name": "TestMinecraftEvaluationGames",
+        "result_game_data_container_name": "mturk-minecraft-evaluation",
+        "result_game_data_blob_prefix": "test_gamedata",
+        "hit_config": {
+            "qualification_type_id": "<QUALIFICATION_TYPE_ID>",
+            "hit_lifetime_seconds": 1800,
+            "reward": "0.80",
+            "keywords": "iglu, agent, minecraft, artificial intelligence, natural language",
+            "auto_approval_delay_seconds": 3600,
+            "assignment_duration_in_seconds": 1200,
+            "title": "Sandbox: IGLU - Play Minecraft game!",
+            "description": "Play with and AI agent in Minecraft and complete a short survey."
+        }
+    }
+}

@@ -1,0 +1,99 @@
+{
+  "name": "{{ task_name }}",
+
+  "initialGameState": {
+    {#- instructions that will be provided for players. Must have special chars scaped. #}
+    "instructions": {{ task_instructions }},
+
+    {#- Description of the task initial world #}
+    "worldState": {
+      "generatorName": "{{ world_generator_name|default('CleanroomGenerator:.1|minecraft:grass_block', true) }}",
+
+      {#- Blocks added on top of the generator. Keys are strings representing the position
+          in format [x,y,z,pitch,yaw], where coordinates are floats.
+          The values specify the properties of the block, in this case, the Minecraft id of the block
+          Example: "[1.0,0.0,13.0,0.0,0.0]": { "type": 11 }
+       #}
+      "blockChanges": {{ initial_world_block_changes|tojson }}
+    },
+
+    {#- Initial state of players. Each player is identified by their role id in the tournament
+        where the task will be uploaded.
+        All location are represented as dictionaries with keys "x", "y", "z", "pitch" and "yaw"
+        and float values. #}
+    "playerStates": {
+      {%- for player_role_id, player_state_attributes in player_states.items() %}
+      "{{ player_role_id }}": {
+        {%- set comma = joiner(",") %}
+
+        {#- spawnLocation determines the location where the player will appear in the world as
+           absolute coordinates. #}
+        {%- if 'spawnLocation' in player_state_attributes %}{{ comma() }}
+        "spawnLocation": {{ player_state_attributes.spawnLocation|tojson }}
+        {%- endif %}
+
+        {#- movementRegion limits the movement of the player to a certain area. Contains keys
+           "origin", with the location of the corner of the region, and "size", a location
+           that indicates how far in that coordinate the region extends.
+           Pitch and yaw values are ignored.
+        #}
+        {%- if 'movementRegion' in player_state_attributes %}{{ comma() }}
+        "movementRegion": {{ player_state_attributes.movementRegion|tojson }}
+        {%- endif %}
+
+      }{%- if not loop.last %},{%- endif %}
+      {%- endfor %}
+    }
+  },
+
+  {#- List of changes to arrive to the multiple possible target states of the game.
+      Accepted keys are "worldChanges" and "playerChanges". "worldChanges" contains a
+      sub-dictionary with a key "blockChanges" similar to the "initialGameState" section.
+  #}
+  "targetGameChanges": [
+    {%- for target_game_state in target_game_states %}
+    {
+      {%- set comma = joiner(",") %}
+
+      {%- if 'worldChanges' in target_game_state %}
+      {{ comma() }}"worldChanges": {{ target_game_state.worldChanges|tojson }}
+      {%- endif %}
+
+      {%- if 'playerChanges' in target_game_state %}
+      {{ comma() }}"playerChanges": {{ target_game_state.playerChanges|tojson }}
+      {%- endif %}
+
+    }{%- if not loop.last %},{%- endif %}
+    {%- endfor %}
+  ]
+
+  {#- State of the Task being created. The two possible values are Published or Draft.
+      It indicated if the task is ready to be played by everybody or only by the organizers
+      of the tournament. Currently, it is not been used.
+   #}
+  ,"state": "{{task_state}}"
+  {#- Size of world in X and Z dimension. They determine the blocks that are expanded from the
+      generator and sent to the agent service. The world in Minecraft will not be altered by
+      this number, and Players can move outside the border. Unused. #}
+  ,"worldSizeX": {{world_size_x}}
+  ,"worldSizeZ": {{world_size_z}}
+
+  {#- Sets limits on the game to control the maximum duration in seconds or
+      maximum number of turns. Accepted keys are "maxDurationSeconds" and "maxTurns", both
+      are optional. #}
+  {%- if game_limits %}
+  ,"gameLimits": {{ game_limits|tojson }}
+  {%- endif %}
+
+  {#- You may set limits on each role's turn to control the maximum duration in seconds. #}
+  {%- if turn_limits %}
+  ,"turnLimits": {
+      {%- for turn_limit_role_id, turn_limit_max_time_seconds in turn_limits.items() %}
+      "{{ turn_limit_role_id }}": {
+          "maxTimeOutSeconds": {{ turn_limit_max_time_seconds }}
+      }
+      {%- if not loop.last %},{%- endif %}
+      {%- endfor %}
+  }
+  {%- endif %}
+}
