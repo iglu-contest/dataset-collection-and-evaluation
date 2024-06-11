@@ -1,0 +1,191 @@
+<QuestionForm xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd'>
+    <Question>
+        <QuestionIdentifier>consent_form</QuestionIdentifier>
+        <DisplayName>Consent Form</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p><a href="https://iglumturkstorage.blob.core.windows.net/public-data/mturk_images/consent_form_mturk_final (1).pdf" target="_blank"><b>Click to read concent form</b></a>,
+                indicate if you understand and agree. </p>
+                <p><b>It is important to agree; otherwise, the qualification test will not be validated.</b></p>
+                <p><b>Do you understand and consent to these terms?</b></p>
+          ]]></FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>consent_agree</SelectionIdentifier>
+                        <Text>I agree</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>minecraft_consent</QuestionIdentifier>
+        <DisplayName>Minecraft set up check</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <h3>To complete this hit, you MUST have Minecraft 19.2 installed with an original license.</h3>
+                <p><b>It is important you double check you have the correct version and a valid username, other versions will not work.</b></p>
+                <p><b>Do you understand and consent to these terms?</b></p>
+          ]]></FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>minecraft_consent_agree</SelectionIdentifier>
+                        <Text>I confirm I have Minecraft 19.2 installed and I understand that I won't be able to complete the HITs without it.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q0</QuestionIdentifier>
+        <DisplayName>Instructions and preliminar question</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <p>
+                Give instructions to an AI agent to finish the structure!
+                </p>
+                <ul>
+                    <li>The hit will provide you instructions and a code for joining our Minecraft server. Once you enter the code  you will be teleported to a Minecraft world with two structures. The structure in the <b>target zone</b> you will see at your left is the structure we want to copy, and the structure in the <b>building zone</b> is a partially built starting point.</li>
+                    <li>The first task is to examine both instructions and understand what changes need to be done in the starting structure to replicate the target structure.</li>
+                    <li>You will start the game by giving an instruction to the agent in a chat message.
+                        <ul>
+                            <li>Your instructions must specify the <b>color</b> and <b>position</b> of all the blocks to place or remove.</li>
+                            <li>Use positions using the cardinal points. Avoid phrases like <i>to your right</i>, instead use <i>towards West</i>.</li>
+                            <li>Avoid referring to the agent's past actions, with instructions like <i>Go back</i>, <i>Remove the blocks you placed</i>. The agent has no memory.</li>
+                        </ul>
+                    </li>
+                    <li>You will indicate your turn as finished, and the agent will try to follow the instruction.</li>
+                    <li>You will repeat this process until 3 turns are completed. After this, you will finish the game. This will give you a confirmation code that validates you have played the game. YOU NEED TO PASTE THIS CODE IN THE HIT.</li>
+                    <li>You will play a similar game with a second agent.</li>
+                    <li>You will provide written feedback about each agent's performance .</li>
+                </ul>
+
+                <p><b>Please note that you will only get paid if you:</b></p>
+                <ul>
+                    <li>Play at least 3 turns.</li>
+                    <li>Write understandable and concise English instructions.</li>
+                    <li>Copy the two valid completion codes provided by the Minecraft server into the HIT.</li>
+                    <li>Click on the <b>"Submit"</b> button at the bottom.</li>
+                    <li>The explained actions are in "instructions format" and  informative enough to allow someone else to complete the structure.</li>
+                </ul>
+
+                <h2>Preliminar question</h2>
+
+                <p>What information IS NOT NECESSARY in the instruction to make it valid.</p>
+                <br></br>
+
+            ]]></FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q0_incorrect3</SelectionIdentifier>
+                        <Text>The color of all the blocks you mention in the instruction.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q0_correct</SelectionIdentifier>
+                        <Text>The position of the blocks to place or destroy, from the agent point of view. For example: in front of you, two blocks to your left.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q0_incorrect2</SelectionIdentifier>
+                        <Text>The position of the blocks to place or destroy, using the cardinal points. For example: from North to South, from the corner, three blocks towards west.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q0_incorrect1</SelectionIdentifier>
+                        <Text>The operation to do with the blocks, like place or destroy.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q1</QuestionIdentifier>
+        <DisplayName>Minecraft set up check</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <h2>Question 1</h2>
+
+                <p>Look at the world in the image and pick the instruction that <b>IS NOT</b> valid to
+                start replicating the structure in the target zone into the building zone.</p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/public-data/mturk_images/qualifier_top_screenshot2.jpg" alt="Screenshot showing a top view of the Minecraft world seen in the HIT."/>
+                <br></br>
+          ]]></FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q1_correct</SelectionIdentifier>
+                        <Text>Destroy the green blocks</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q1_incorrect1</SelectionIdentifier>
+                        <Text>Destroy the two yellow blocks from the column and place green blocks in their place.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q1_incorrect2</SelectionIdentifier>
+                        <Text>Destroy the two yellow blocks from the column</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q1_incorrect3</SelectionIdentifier>
+                        <Text>Walk to the side of the column in the East and destroy the yellow blocks.</Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+    <Question>
+        <QuestionIdentifier>Q2</QuestionIdentifier>
+        <DisplayName>Minecraft set up check</DisplayName>
+        <IsRequired>true</IsRequired>
+        <QuestionContent>
+            <FormattedContent><![CDATA[
+                <h2>Question 2</h2>
+
+                <p>Look at the world in the image and pick the instruction that <b>IS NOT</b> valid to
+                start replicating the structure in the target zone into the building zone.</p>
+                <img src="https://iglumturkstorage.blob.core.windows.net/public-data/mturk_images/qualifier_top_screenshot.jpg" alt="Screenshot showing a top view of the Minecraft world seen in the HIT."/>
+                <br></br>
+          ]]></FormattedContent>
+        </QuestionContent>
+        <AnswerSpecification>
+            <SelectionAnswer>
+                <StyleSuggestion>radiobutton</StyleSuggestion>
+                <Selections>
+                    <Selection>
+                        <SelectionIdentifier>Q2_incorrect1</SelectionIdentifier>
+                        <Text>Add a row of 3 blue blocks from West to East starting from the 5th row counting from South to North, and the 3rd row from West to East</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q2_incorrect2</SelectionIdentifier>
+                        <Text>Put three blue blocks in the bottom part of the structure into an E like shape, going from east to west</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q2_correct</SelectionIdentifier>
+                        <Text>Walk 4 position forward and two to your right. Place 3 blocks to complete at E like shape.</Text>
+                    </Selection>
+                    <Selection>
+                        <SelectionIdentifier>Q2_incorrect3</SelectionIdentifier>
+                        <Text>This structure will look like a blue E with an extra block. From the West-South corner,
+                        walk 4 steps towards North, then walk 4 blocks east. Start placing 3 blocks towards east. </Text>
+                    </Selection>
+                </Selections>
+            </SelectionAnswer>
+        </AnswerSpecification>
+    </Question>
+</QuestionForm>

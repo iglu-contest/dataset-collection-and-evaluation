@@ -1,0 +1,14 @@
+ipykernel==6.15.2
+ipython==8.4.0
+jupyter==1.0.0
+jupyter_core==4.11.1
+jupyterlab==3.4.4
+matplotlib
+nb_conda_kernels==2.3.1
+nbclassic==0.3.5
+nbclient==0.5.13
+nbconvert==6.4.4
+nbformat==5.5.0
+nest-asyncio==1.5.5
+notebook==6.4.12
+widgetsnbextension==3.5.2
